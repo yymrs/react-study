@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css'
-import { CHANGE_INPUT,ADD_ITEM,DELETE_ITEM } from "../store/actionTypes"; //把action的类型分出来
 import { changeInputAction,changelistAction,dellistAction } from "../store/actionCreators";
-import { Input,Button,List,message  } from 'antd'
+import { message } from 'antd'
 import store from '../store/index'
-// const data=[
-//     '早8点开晨会，分配今天的开发工作',
-//     '早9点和项目经理作开发需求讨论会',
-//     '晚5:30对今日代码进行review'
-// ]
+import TodoListUi from './TodoListUi'
 class TodoList extends Component {
     constructor(props) {
         // 构造函数执行一次
@@ -53,22 +48,13 @@ class TodoList extends Component {
     render() { 
         return ( 
             <div>
-                <div>
-                    <Input placeholder={'Write Something'} value={this.state.inputValue} onChange={this.chnageValue} style={{ width:'250px'}}/>
-                    <Button type="primary" onClick={this.addList}>增加</Button>
-                    <List
-                        style={{margin:'10px auto',width:'300px'}}
-                        bordered
-                        dataSource={this.state.list}
-                        renderItem={(item,index) => (
-                            <List.Item>
-                                {item}
-                                <Button size='small' type="primary" danger onClick={()=>this.deletelist(index)}>删除</Button>
-                            </List.Item>
-                        )}
-                    />
-                </div>
-                
+                {<TodoListUi
+                    inputValue={this.state.inputValue}
+                    chnageValue={this.chnageValue}
+                    addList={this.addList}
+                    list={this.state.list}
+                    deletelist={this.deletelist}
+                ></TodoListUi>}
             </div>
          );
     }
