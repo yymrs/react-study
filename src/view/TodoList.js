@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css'
-import { changeInputAction,changelistAction,dellistAction } from "../store/actionCreators";
+import { changeInputAction,changelistAction,dellistAction,initListData } from "../store/actionCreators";
 import { message } from 'antd'
 import store from '../store/index'
+import {get} from '../http/index'
 import TodoListUi from './TodoListUi'
 class TodoList extends Component {
     constructor(props) {
@@ -20,6 +21,14 @@ class TodoList extends Component {
         this.addList = this.addList.bind(this)
         store.subscribe(this.storeChange)
     }
+    componentDidMount() {
+        get('list.json').then((res)=>{
+            console.log(res.data.list)
+            const data = res.data.list
+            store.dispatch(initListData(data))
+        })
+    }
+    
     chnageValue(e) {
         this.setState({
             inputValue:e.target.value
