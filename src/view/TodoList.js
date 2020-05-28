@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css'
+import { CHANGE_INPUT,ADD_ITEM,DELETE_ITEM } from "../store/actionTypes"; //把action的类型分出来
 import { Input,Button,List,message  } from 'antd'
 import store from '../store/index'
 // const data=[
@@ -28,7 +29,7 @@ class TodoList extends Component {
             inputValue:e.target.value
         })
         const action ={
-            type:'changeInput',
+            type:CHANGE_INPUT,
             value:e.target.value
         }
         store.dispatch(action)
@@ -45,14 +46,14 @@ class TodoList extends Component {
            return
         }
         const action = {
-            type:'addlist',
+            type:ADD_ITEM,
             value:this.state.inputValue
         }
         store.dispatch(action)
     }
     deletelist(i) {
         const action ={
-            type:'dellist',
+            type:DELETE_ITEM,
             index:i
         }
         store.dispatch(action)

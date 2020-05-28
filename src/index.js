@@ -10,7 +10,7 @@ class App extends Component {
     render() {
         return (
             <div className='box'>
-                react
+                学习redux
                 <Todolist>
                     
                 </Todolist>
