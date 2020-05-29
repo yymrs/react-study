@@ -1,5 +1,6 @@
 const defaultState = {
-    number:0
+    number:0,
+    list:[]
 }
 export default (state = defaultState,action)=>{
     console.log(action);
