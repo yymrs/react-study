@@ -1,19 +1,25 @@
 import React, { Component } from "react"
 import ReactDOM from "react-dom"
-import AddNumber from './view/AddNumber'
-import SeeNumber from './view/SeeNumber'
-import {Provider} from 'react-redux'
-import store from './store'
+import Hooks from './view/Hooks'
+import UseEffect from './view/UseEffect'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 class App extends Component {
-    
     render() {
-        return(
-            <Provider store={store}>
-                <AddNumber></AddNumber>
-                <SeeNumber></SeeNumber>
-            </Provider>
+        return (
+            <div>
+                <Router>
+                    <ul>
+                        <li><Link to='/Hooks'>Hooks</Link ></li>
+                        <li><Link to='/UseEffect'>UseEffect</Link ></li>
+                    </ul>
+                    {/* <Hooks></Hooks>
+                <UseEffect></UseEffect> */}
+                    <Route path="/Hooks" component={Hooks} />
+                    <Route path="/UseEffect" component={UseEffect}></Route>
+                </Router>
+            </div>
         )
     }
 }
 
-ReactDOM.render(<App></App>,document.querySelector('#root'))
+ReactDOM.render(<App></App>, document.querySelector('#root'))
