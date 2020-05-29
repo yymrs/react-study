@@ -45,7 +45,7 @@ class AddNumber extends Component {
     render() {
         return (
             <div>
-                {this.state.number}
+                {this.props.number}
                 <br/>
                 <button onClick={this.addNumber}>+</button> 
                 <br/>
@@ -55,11 +55,11 @@ class AddNumber extends Component {
     }
 }
 
-// const stateToProps = (state)=>{
-//     console.log(state);
-//     return {
-//         number : state.number
-//     }
-// }
-export default AddNumber
-// export default connect(stateToProps,null)(AddNumber);
+const stateToProps = (state)=>{
+    console.log(state);
+    return {
+        number : state.number
+    }
+}
+// export default AddNumber
+export default connect(stateToProps,null)(AddNumber);
