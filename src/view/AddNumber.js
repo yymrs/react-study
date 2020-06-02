@@ -14,7 +14,7 @@ class AddNumber extends Component {
         // store.getState() //获取仓库的数据
         // Store 允许使用store.subscribe方法设置监听函数，一旦 State 发生变化，就自动执行这个函数。从而更新我们ui
         let unsubscribe = store.subscribe(this.changeState)
-        // unsubscribe();用来接触监听
+        // unsubscribe();用来解除监听
         console.log(store);
     }
     subNumber() {
@@ -56,10 +56,11 @@ class AddNumber extends Component {
 }
 
 const stateToProps = (state)=>{
-    console.log(state);
+    console.log(state);//state是store仓库的数据
     return {
         number : state.number
     }
+    // 经过这样映射后this.props.number就是state.number
 }
 // export default AddNumber
 export default connect(stateToProps,null)(AddNumber);

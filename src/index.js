@@ -8,6 +8,7 @@ class App extends Component {
     
     render() {
         return(
+            // Provider所包含的组件都可以访问到store
             <Provider store={store}>
                 <AddNumber></AddNumber>
                 <SeeNumber></SeeNumber>
