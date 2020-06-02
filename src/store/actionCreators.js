@@ -18,7 +18,7 @@ export const initListData = (data)=>({
 })
 export const getListData = ()=>{
     return (dispatch)=>{
-        get('list.json').then((res)=>{
+        get('http://localhost:3000/list.json').then((res)=>{
             const data = res.data.list
             const action = initListData(data)
             dispatch(action)
